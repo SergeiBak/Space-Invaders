@@ -13,6 +13,11 @@ public class Invaders : MonoBehaviour
 
     [SerializeField]
     private float invaderSpacing = 2.0f;
+    [SerializeField]
+    private float invaderSpeed = 1.0f;
+
+    private Vector3 direction = Vector2.right;
+
 
     private void Awake()
     {
@@ -32,5 +37,39 @@ public class Invaders : MonoBehaviour
                 invader.transform.localPosition = pos;
             }
         }
+    }
+
+    private void Update()
+    {
+        transform.position += direction * invaderSpeed * Time.deltaTime;
+
+        Vector3 leftEdge = Camera.main.ViewportToWorldPoint(Vector3.zero);
+        Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
+
+        foreach (Transform invader in transform)
+        {
+            if (!invader.gameObject.activeInHierarchy)
+            {
+                continue;
+            }
+
+            if (direction == Vector3.right && invader.position.x >= (rightEdge.x - 1))
+            {
+                AdvanceRow();
+            }
+            else if (direction == Vector3.left && invader.position.x <= (leftEdge.x + 1))
+            {
+                AdvanceRow();
+            }
+        }
+    }
+
+    private void AdvanceRow()
+    {
+        direction.x *= -1;
+
+        Vector3 pos = transform.position;
+        pos.y -= 1f;
+        transform.position = pos;
     }
 }
