@@ -12,6 +12,8 @@ public class Invader : MonoBehaviour
     private SpriteRenderer sr;
     private int animationFrame;
 
+    public System.Action killed;
+
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -32,5 +34,14 @@ public class Invader : MonoBehaviour
         }
 
         sr.sprite = animationSprites[animationFrame];
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Laser"))
+        {
+            killed.Invoke();
+            gameObject.SetActive(false);
+        }
     }
 }

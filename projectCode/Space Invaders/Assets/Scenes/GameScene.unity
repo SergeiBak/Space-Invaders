@@ -353,7 +353,30 @@ MonoBehaviour:
   rows: 5
   cols: 11
   invaderSpacing: 2
-  invaderSpeed: 1
+  invaderSpeed:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.25
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 8
+      inSlope: 20.939732
+      outSlope: 20.939732
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.030912697
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &615768278
 Transform:
   m_ObjectHideFlags: 0
