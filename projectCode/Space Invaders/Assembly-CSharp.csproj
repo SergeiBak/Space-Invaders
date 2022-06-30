@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Invader.cs" />
+    <Compile Include="Assets\Scripts\Invaders.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
