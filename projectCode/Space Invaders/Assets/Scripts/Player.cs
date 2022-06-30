@@ -5,7 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
+    private Projectile laserPrefab;
+    [SerializeField]
     private float speed = 5;
+    private bool laserActive = false;
 
     private void Update()
     {
@@ -17,5 +20,25 @@ public class Player : MonoBehaviour
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
+    }
+
+    private void Shoot()
+    {
+        if (!laserActive)
+        {
+            Projectile projectile = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+            projectile.destroyed += LaserDestroyed;
+            laserActive = true;
+        }
+    }
+
+    private void LaserDestroyed()
+    {
+        laserActive = false;
     }
 }

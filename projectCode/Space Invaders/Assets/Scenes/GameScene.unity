@@ -436,7 +436,8 @@ GameObject:
   - component: {fileID: 724810018}
   - component: {fileID: 724810017}
   - component: {fileID: 724810016}
-  m_Layer: 0
+  - component: {fileID: 724810019}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,6 +535,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &724810019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724810015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467ebcf5929686244abb921a8e202022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserPrefab: {fileID: -2308484607727712629, guid: f5739fff74df90c438253630a2b6eb0a, type: 3}
+  speed: 5
 --- !u!1 &1456222393
 GameObject:
   m_ObjectHideFlags: 0
