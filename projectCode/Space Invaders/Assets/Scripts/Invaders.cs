@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Invaders : MonoBehaviour
 {
@@ -23,10 +22,12 @@ public class Invaders : MonoBehaviour
     private float missileAttackRate = 1f;
 
     private Vector3 direction = Vector2.right;
+    public Vector3 initialPosition { get; private set; }
+    public System.Action<Invader> killed;
 
     public int invadersKilled { get; private set; }
     private int invadersAlive => totalInvaders - invadersKilled;
-    private int totalInvaders => rows * cols;
+    public int totalInvaders => rows * cols;
     private float percentKilled => (float)invadersKilled / (float)totalInvaders;
 
     [SerializeField]
@@ -36,6 +37,8 @@ public class Invaders : MonoBehaviour
 
     private void Awake()
     {
+        initialPosition = transform.position;
+
         for (int row = 0; row < rows; row++)
         {
             float gridWidth = invaderSpacing * (cols - 1);
@@ -111,13 +114,27 @@ public class Invaders : MonoBehaviour
         }
     }
 
-    private void InvaderKilled()
+    private void InvaderKilled(Invader invader)
     {
+        invader.gameObject.SetActive(false);
         invadersKilled++;
+        killed(invader);
 
-        if (invadersKilled >= totalInvaders)
+        //if (invadersKilled >= totalInvaders)
+        //{
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //}
+    }
+
+    public void ResetInvaders()
+    {
+        invadersKilled = 0;
+        direction = Vector3.right;
+        transform.position = initialPosition;
+
+        foreach (Transform invader in transform)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            invader.gameObject.SetActive(true);
         }
     }
 }

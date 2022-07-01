@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +17,8 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float edgeBuffer = 1.5f;
+
+    public System.Action killed;
 
     private void Update()
     {
@@ -62,7 +63,10 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Invader") ||
             collision.gameObject.layer == LayerMask.NameToLayer("Missile"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (killed != null)
+            {
+                killed.Invoke();
+            }
         }
     }
 }
