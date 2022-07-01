@@ -29,6 +29,10 @@ public class Invaders : MonoBehaviour
     private int totalInvaders => rows * cols;
     private float percentKilled => (float)invadersKilled / (float)totalInvaders;
 
+    [SerializeField]
+    private Transform leftEdge;
+    [SerializeField]
+    private Transform rightEdge;
 
     private void Awake()
     {
@@ -60,8 +64,8 @@ public class Invaders : MonoBehaviour
     {
         transform.position += direction * invaderSpeed.Evaluate(percentKilled) * Time.deltaTime;
 
-        Vector3 leftEdge = Camera.main.ViewportToWorldPoint(Vector3.zero);
-        Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
+        //Vector3 leftEdge = Camera.main.ViewportToWorldPoint(Vector3.zero);
+        //Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
 
         foreach (Transform invader in transform)
         {
@@ -70,11 +74,11 @@ public class Invaders : MonoBehaviour
                 continue;
             }
 
-            if (direction == Vector3.right && invader.position.x >= (rightEdge.x - 1))
+            if (direction == Vector3.right && invader.position.x >= (rightEdge.position.x - 1.5))
             {
                 AdvanceRow();
             }
-            else if (direction == Vector3.left && invader.position.x <= (leftEdge.x + 1))
+            else if (direction == Vector3.left && invader.position.x <= (leftEdge.position.x + 1.5))
             {
                 AdvanceRow();
             }

@@ -11,15 +11,29 @@ public class Player : MonoBehaviour
     private float speed = 5;
     private bool laserActive = false;
 
+    [SerializeField]
+    private Transform leftEdge;
+    [SerializeField]
+    private Transform rightEdge;
+
+    [SerializeField]
+    private float edgeBuffer = 1.5f;
+
     private void Update()
     {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
+            if (transform.position.x > (leftEdge.position.x + edgeBuffer))
+            {
+                transform.position += Vector3.left * speed * Time.deltaTime;
+            }
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            transform.position += Vector3.right * speed * Time.deltaTime;
+            if (transform.position.x < (rightEdge.position.x - edgeBuffer))
+            {
+                transform.position += Vector3.right * speed * Time.deltaTime;
+            } 
         }
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
