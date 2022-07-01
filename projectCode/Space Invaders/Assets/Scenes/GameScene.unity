@@ -6851,6 +6851,14 @@ MonoBehaviour:
   livesIcon: {fileID: 520599140}
   extraLifeIcon1: {fileID: 90012647}
   extraLifeIcon2: {fileID: 2016294554}
+  scoreOnesPlace: {fileID: 420331645}
+  scoreTensPlace: {fileID: 316642795}
+  scoreHundredsPlace: {fileID: 1240158145}
+  scoreThousandsPlace: {fileID: 873877985}
+  highScoreOnesPlace: {fileID: 272833559}
+  highScoreTensPlace: {fileID: 1792054844}
+  highScoreHundredsPlace: {fileID: 748377178}
+  highScoreThousandsPlace: {fileID: 1593601448}
   zeroSprite: {fileID: 9164304147978485084, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
   oneSprite: {fileID: 5357375187166064817, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
   twoSprite: {fileID: -2860073205081715815, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
