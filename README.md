@@ -15,7 +15,7 @@ This project is a recreation of Space Invaders, a 1978 shoot 'em up style arcade
 In Space Invaders, the player controls a laser cannon that can move left and right, as well as fire at any approaching Invaders. The Invaders make their way towards the player by moving side to side, and dropping down a level every time they reach the edge of the screen. The goal of the game is to blast away as many waves of Invaders as possible! But beware, the less Invaders left, the faster they speed up!    
 
 ## Test The Project!
-In order to play this version of Space Invaders, follow the [link](https://sergeibak.github.io/PersonalWebsite/Snake.html) to a in-browser WebGL build (No download required!).
+In order to play this version of Space Invaders, follow the [link](https://sergeibak.github.io/PersonalWebsite/SpaceInvaders.html) to a in-browser WebGL build (No download required!).
 
 ## Code
 A brief description of all of the classes is as follows:
