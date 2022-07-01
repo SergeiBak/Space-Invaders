@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void LaserDestroyed()
+    private void LaserDestroyed(Projectile laser)
     {
         laserActive = false;
     }

@@ -5,23 +5,47 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField]
-    private Vector3 direction;
-    [SerializeField]
     private float speed;
+    [SerializeField]
+    private Vector3 direction = Vector3.up;
+    public System.Action<Projectile> destroyed;
+    public new BoxCollider2D collider { get; private set; }
 
-    public System.Action destroyed;
+    private void Awake()
+    {
+        collider = GetComponent<BoxCollider2D>();
+    }
+
+    private void OnDestroy()
+    {
+        if (destroyed != null)
+        {
+            destroyed.Invoke(this);
+        }
+    }
 
     private void Update()
     {
         transform.position += direction * speed * Time.deltaTime;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void CheckCollision(Collider2D other)
     {
-        if (destroyed != null)
+        Bunker bunker = other.gameObject.GetComponent<Bunker>();
+
+        if (bunker == null || bunker.CheckCollision(collider, transform.position))
         {
-            destroyed.Invoke();
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        CheckCollision(other);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        CheckCollision(other);
     }
 }
