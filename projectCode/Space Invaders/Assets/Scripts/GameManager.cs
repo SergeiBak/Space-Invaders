@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,11 +10,39 @@ public class GameManager : MonoBehaviour
     private MysteryShip mysteryShip;
     private Bunker[] bunkers;
 
-    //[SerializeField]
-    //private GameObject gameOverUI;
+    [SerializeField]
+    private GameObject gameOverUI;
 
     public int score { get; private set; }
     public int lives { get; private set; }
+
+    [SerializeField]
+    private Image livesIcon;
+    [SerializeField]
+    private Image extraLifeIcon1;
+    [SerializeField]
+    private Image extraLifeIcon2;
+
+    [SerializeField]
+    private Sprite zeroSprite;
+    [SerializeField]
+    private Sprite oneSprite;
+    [SerializeField]
+    private Sprite twoSprite;
+    [SerializeField]
+    private Sprite threeSprite;
+    [SerializeField]
+    private Sprite fourSprite;
+    [SerializeField]
+    private Sprite fiveSprite;
+    [SerializeField]
+    private Sprite sixSprite;
+    [SerializeField]
+    private Sprite sevenSprite;
+    [SerializeField]
+    private Sprite eightSprite;
+    [SerializeField]
+    private Sprite nineSprite;
 
     private void Awake()
     {
@@ -42,7 +71,7 @@ public class GameManager : MonoBehaviour
 
     private void NewGame()
     {
-        //gameOverUI.SetActive(false);
+        gameOverUI.SetActive(false);
 
         SetScore(0);
         SetLives(3);
@@ -72,7 +101,7 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        //gameOverUI.SetActive(true);
+        gameOverUI.SetActive(true);
         invaders.gameObject.SetActive(false);
     }
 
@@ -85,7 +114,31 @@ public class GameManager : MonoBehaviour
     private void SetLives(int lives)
     {
         this.lives = Mathf.Max(lives, 0);
-        //livesText.text = lives.ToString();
+        
+        switch (this.lives)
+        {
+            case 0:
+                livesIcon.sprite = zeroSprite;
+                break;
+            case 1:
+                livesIcon.sprite = oneSprite;
+                extraLifeIcon1.enabled = false;
+                extraLifeIcon2.enabled = false;
+                break;
+            case 2:
+                livesIcon.sprite = twoSprite;
+                extraLifeIcon1.enabled = true;
+                extraLifeIcon2.enabled = false;
+                break;
+            case 3:
+                livesIcon.sprite = threeSprite;
+                extraLifeIcon1.enabled = true;
+                extraLifeIcon2.enabled = true;
+                break;
+            default:
+                Debug.LogError("Invalid Case in SetLives switch!");
+                break;
+        }
     }
 
     private void OnPlayerKilled()
