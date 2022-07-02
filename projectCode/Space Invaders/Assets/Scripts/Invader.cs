@@ -15,6 +15,11 @@ public class Invader : MonoBehaviour
 
     public System.Action<Invader> killed;
 
+    [SerializeField]
+    private DeathAnimation deathEffect;
+    [SerializeField]
+    private Sprite deathSprite;
+
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -41,6 +46,9 @@ public class Invader : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Laser"))
         {
+            DeathAnimation effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+            effect.sr.sprite = deathSprite;
+
             killed?.Invoke(this);
             gameObject.SetActive(false);
         }

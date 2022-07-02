@@ -146,3 +146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationSprites: []
   animationTime: 1
+  score: 10
+  deathEffect: {fileID: 4081833279260984758, guid: b4051ba27bd4cb549bc32972eae87961, type: 3}
+  deathSprite: {fileID: 232573999057797981, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}

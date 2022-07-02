@@ -64,6 +64,8 @@
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\MysteryShip.cs" />
     <Compile Include="Assets\Scripts\MissileAnimation.cs" />
+    <Compile Include="Assets\Scripts\DeathAnimation.cs" />
+    <Compile Include="Assets\Scripts\TopBoundary.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

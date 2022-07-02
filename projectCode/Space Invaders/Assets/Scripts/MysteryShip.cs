@@ -17,6 +17,11 @@ public class MysteryShip : MonoBehaviour
     public int direction { get; private set; } = -1;
     public bool spawned { get; private set; }
 
+    [SerializeField]
+    private DeathAnimation deathEffect;
+    [SerializeField]
+    private Sprite deathSprite;
+
     private void Start()
     {
         // Offset the destination by a unit so the ship is fully out of sight
@@ -93,6 +98,10 @@ public class MysteryShip : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Laser"))
         {
+            DeathAnimation effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+            effect.sr.sprite = deathSprite;
+            effect.sr.color = new Color32(0xFF, 0x00, 0x00, 0xFF); // FF0000
+
             Despawn();
 
             if (killed != null) {

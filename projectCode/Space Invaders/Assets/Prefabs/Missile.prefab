@@ -147,6 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 12
   direction: {x: 0, y: -1, z: 0}
+  deathEffect: {fileID: 4081833279260984758, guid: b4051ba27bd4cb549bc32972eae87961, type: 3}
+  deathEffectSprite: {fileID: -4597014609423452311, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
 --- !u!114 &-7232240671257179578
 MonoBehaviour:
   m_ObjectHideFlags: 0
