@@ -65,6 +65,11 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int wave = 1;
 
+    [SerializeField]
+    private GameObject playerDeath;
+    [SerializeField]
+    private Sprite[] playerDeathSprites;
+
     private void Awake()
     {
         player = FindObjectOfType<Player>();
@@ -118,8 +123,8 @@ public class GameManager : MonoBehaviour
 
         player.ResetLaser();
 
-        invaders.ResetInvaders();
         invaders.gameObject.SetActive(true);
+        invaders.ResetInvaders();
 
         for (int i = 0; i < bunkers.Length; i++)
         {
@@ -248,13 +253,82 @@ public class GameManager : MonoBehaviour
 
     private void OnPlayerKilled()
     {
+        // SetLives(lives - 1);
+
+        Transform playerPos = player.gameObject.transform;
+        player.gameObject.SetActive(false);
+
+        StartCoroutine(PlayerDeathSequence(2f, playerPos));
+
+        //if (lives > 0)
+        //{
+        //    Invoke(nameof(NewRound), 1f);
+        //}
+        //else
+        //{
+        //    GameOver();
+        //}
+    }
+
+    private IEnumerator PlayerDeathSequence(float delay, Transform playerPos)
+    {
+        float frameTime = delay / 12f;
+
+        Projectile[] projectiles = FindObjectsOfType<Projectile>();
+        foreach (Projectile projectile in projectiles)
+        {
+            Destroy(projectile.gameObject);
+        }
+
+        Time.timeScale = 0;
+
+        player.ResetLaser();
+
+        playerDeath.SetActive(true);
+        playerDeath.transform.position = playerPos.position;
+
+        int frame = 0;
+
+        SpriteRenderer sr = playerDeath.GetComponent<SpriteRenderer>();
+        sr.sprite = playerDeathSprites[frame];
+
+        yield return null;
+        DeathAnimation[] deathEffects = FindObjectsOfType<DeathAnimation>();
+        foreach (DeathAnimation deathEffect in deathEffects)
+        {
+            Destroy(deathEffect.gameObject);
+        }
+
+        float pauseEndTime = Time.realtimeSinceStartup + delay;
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return frameTime;
+
+            frame++;
+            if (frame >= playerDeathSprites.Length)
+            {
+                frame = 0;
+            }
+
+            sr.sprite = playerDeathSprites[frame];
+        }
+
+        playerDeath.SetActive(false);
         SetLives(lives - 1);
 
-        player.gameObject.SetActive(false);
+        pauseEndTime = Time.realtimeSinceStartup + (delay / 2);
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return null;
+        }
+
+        Time.timeScale = 1;
 
         if (lives > 0)
         {
-            Invoke(nameof(NewRound), 1f);
+            Respawn();
+
+            // Invoke(nameof(NewRound), 1f);
         }
         else
         {
