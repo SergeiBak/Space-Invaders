@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7970156371237461351}
   - component: {fileID: 1828252503904494640}
   - component: {fileID: 985594891698666082}
+  - component: {fileID: -7232240671257179578}
   m_Layer: 9
   m_Name: Missile
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 5cf556935ed166c418e5f42e28ae1038, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -144,5 +145,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f2c4bba42979e4ab2d1670889b8647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 12
   direction: {x: 0, y: -1, z: 0}
-  speed: 20
+--- !u!114 &-7232240671257179578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546800199915466459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce061eb3689bb54f9bbe358c65a30de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missile1Sprites:
+  - {fileID: 1237524764160885808, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
+  - {fileID: -8728944820686424890, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
+  - {fileID: -8027320625964580680, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
+  - {fileID: 346635559954679099, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
+  missile2Sprites:
+  - {fileID: -8819732067034534659, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
+  - {fileID: 5142185204280151302, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
+  - {fileID: 5976347811547310844, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
+  - {fileID: 685725808679440396, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
+  missile3Sprites:
+  - {fileID: -7785852712995740538, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
+  - {fileID: 6428832650031776335, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
+  - {fileID: 2224838927258710175, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
+  - {fileID: -6534493199868978808, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
+  animationTime: 0.05
