@@ -27,10 +27,10 @@ public class Invader : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating(nameof(AnimateSprite), animationTime, animationTime);
+        //InvokeRepeating(nameof(AnimateSprite), animationTime, animationTime);
     }
 
-    private void AnimateSprite()
+    public void AnimateSprite()
     {
         animationFrame++;
 

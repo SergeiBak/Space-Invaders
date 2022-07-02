@@ -58,6 +58,11 @@ public class Player : MonoBehaviour
         laserActive = false;
     }
 
+    public void ResetLaser()
+    {
+        laserActive = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Invader") ||

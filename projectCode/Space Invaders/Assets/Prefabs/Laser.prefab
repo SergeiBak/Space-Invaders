@@ -123,11 +123,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f2c4bba42979e4ab2d1670889b8647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 36
+  speed: 30
   direction: {x: 0, y: 1, z: 0}
   deathEffect: {fileID: 4081833279260984758, guid: b4051ba27bd4cb549bc32972eae87961, type: 3}
   deathEffectSprite: {fileID: -6897595981635797020, guid: afd0057e3c26be34fb65e6e7ab55aea8, type: 3}
-  isLaser: 1
 --- !u!50 &8354344704428070906
 Rigidbody2D:
   serializedVersion: 4

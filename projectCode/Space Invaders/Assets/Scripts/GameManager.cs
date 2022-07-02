@@ -62,6 +62,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Sprite nineSprite;
 
+    [HideInInspector]
+    public int wave = 1;
+
     private void Awake()
     {
         player = FindObjectOfType<Player>();
@@ -98,6 +101,8 @@ public class GameManager : MonoBehaviour
     {
         gameOverUI.SetActive(false);
 
+        wave = 1;
+
         SetScore(0);
         SetLives(3);
         NewRound();
@@ -105,6 +110,14 @@ public class GameManager : MonoBehaviour
 
     private void NewRound()
     {
+        Projectile[] projectiles = FindObjectsOfType<Projectile>();
+        foreach (Projectile projectile in projectiles)
+        {
+            Destroy(projectile.gameObject);
+        }
+
+        player.ResetLaser();
+
         invaders.ResetInvaders();
         invaders.gameObject.SetActive(true);
 
@@ -253,9 +266,15 @@ public class GameManager : MonoBehaviour
     {
         SetScore(score + invader.score);
 
-        if (invaders.invadersKilled == invaders.totalInvaders)
+        if (invaders.invadersKilled == invaders.totalInvaders || !invaders.InvadersLeft())
         {
-            NewRound();
+            wave++;
+            if (wave > 7)
+            {
+                wave = 1;
+            }
+            Invoke(nameof(NewRound), 1f);
+            // NewRound();
         }
     }
 

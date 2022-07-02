@@ -2089,7 +2089,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.25
+      value: 0.01
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2097,13 +2097,13 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 8
-      inSlope: 20.939732
-      outSlope: 20.939732
+      time: 0.96331346
+      value: -0.09192422
+      inSlope: -0.33192533
+      outSlope: -0.33192533
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.030912697
+      inWeight: 0.041495092
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -2112,6 +2112,7 @@ MonoBehaviour:
   missileAttackRate: 1
   leftEdge: {fileID: 256573934}
   rightEdge: {fileID: 1839017667}
+  shiftAmount: 0.25
 --- !u!4 &615768278
 Transform:
   m_ObjectHideFlags: 0
