@@ -81,7 +81,7 @@ public class MysteryShip : MonoBehaviour
         spawned = true;
     }
 
-    private void Despawn()
+    public void Despawn()
     {
         spawned = false;
 

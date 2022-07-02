@@ -109,6 +109,13 @@ public class Invaders : MonoBehaviour
     {
         while (true)
         {
+            if (Time.timeScale == 0) // make sure Invaders do not move if time is paused
+            {
+                while (Time.timeScale == 0)
+                {
+                    yield return null;
+                }
+            }
 
             foreach (Transform currInvader in transform)
             {

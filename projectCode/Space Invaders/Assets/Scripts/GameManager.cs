@@ -115,6 +115,8 @@ public class GameManager : MonoBehaviour
 
     private void NewRound()
     {
+        mysteryShip.Despawn();
+
         Projectile[] projectiles = FindObjectsOfType<Projectile>();
         foreach (Projectile projectile in projectiles)
         {
