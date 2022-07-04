@@ -22,6 +22,13 @@ public class MysteryShip : MonoBehaviour
     [SerializeField]
     private Sprite deathSprite;
 
+    private AudioManager am;
+
+    private void Awake()
+    {
+        am = FindObjectOfType<AudioManager>();
+    }
+
     private void Start()
     {
         // Offset the destination by a unit so the ship is fully out of sight
@@ -79,11 +86,15 @@ public class MysteryShip : MonoBehaviour
         }
 
         spawned = true;
+
+        am.PlayMysteryShipSound();
     }
 
     public void Despawn()
     {
         spawned = false;
+
+        am.StopMysteryShipSound();
 
         if (direction == 1) {
             transform.position = rightDestination;
@@ -103,6 +114,7 @@ public class MysteryShip : MonoBehaviour
             effect.sr.color = new Color32(0xFF, 0x00, 0x00, 0xFF); // FF0000
 
             Despawn();
+            am.PlayEnemyDeathSound();
 
             if (killed != null) {
                 killed.Invoke(this);

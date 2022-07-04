@@ -49,6 +49,7 @@ public class Invader : MonoBehaviour
             DeathAnimation effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
             effect.sr.sprite = deathSprite;
 
+            FindObjectOfType<AudioManager>().PlayEnemyDeathSound();
             killed?.Invoke(this);
             gameObject.SetActive(false);
         }

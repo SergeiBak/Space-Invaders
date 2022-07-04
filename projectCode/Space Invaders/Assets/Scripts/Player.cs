@@ -20,6 +20,13 @@ public class Player : MonoBehaviour
 
     public System.Action killed;
 
+    private AudioManager am;
+
+    private void Awake()
+    {
+        am = FindObjectOfType<AudioManager>();
+    }
+
     private void Update()
     {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -50,6 +57,8 @@ public class Player : MonoBehaviour
             Projectile projectile = Instantiate(laserPrefab, transform.position, Quaternion.identity);
             projectile.destroyed += LaserDestroyed;
             laserActive = true;
+
+            am.PlayPlayerShootSound();
         }
     }
 

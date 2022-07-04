@@ -59,13 +59,14 @@
     <Compile Include="Assets\Scripts\Bunker.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Invader.cs" />
+    <Compile Include="Assets\Scripts\DeathAnimation.cs" />
     <Compile Include="Assets\Scripts\Invaders.cs" />
+    <Compile Include="Assets\Scripts\MissileAnimation.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\MysteryShip.cs" />
-    <Compile Include="Assets\Scripts\MissileAnimation.cs" />
-    <Compile Include="Assets\Scripts\DeathAnimation.cs" />
     <Compile Include="Assets\Scripts\TopBoundary.cs" />
+    <Compile Include="Assets\Scripts\AudioManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

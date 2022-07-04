@@ -70,12 +70,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Sprite[] playerDeathSprites;
 
+    private AudioManager am;
+
     private void Awake()
     {
         player = FindObjectOfType<Player>();
         invaders = FindObjectOfType<Invaders>();
         mysteryShip = FindObjectOfType<MysteryShip>();
         bunkers = FindObjectsOfType<Bunker>();
+
+        am = FindObjectOfType<AudioManager>();
 
         if (!PlayerPrefs.HasKey("SpaceInvadersHighScore")) // if high score doesnt exist, initialize to zero
         {
@@ -259,6 +263,8 @@ public class GameManager : MonoBehaviour
 
         Transform playerPos = player.gameObject.transform;
         player.gameObject.SetActive(false);
+
+        am.PlayPlayerDeathSound();
 
         StartCoroutine(PlayerDeathSequence(2f, playerPos));
 

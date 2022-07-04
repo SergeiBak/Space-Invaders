@@ -43,10 +43,12 @@ public class Invaders : MonoBehaviour
     private IEnumerator movementCoroutine;
 
     private GameManager gm;
+    private AudioManager am;
 
     private void Awake()
     {
         gm = FindObjectOfType<GameManager>();
+        am = FindObjectOfType<AudioManager>();
 
         invaders = new Invader[rows, cols];
 
@@ -160,6 +162,8 @@ public class Invaders : MonoBehaviour
                     yield return new WaitForSeconds(invaderSpeed.Evaluate(percentKilled));
                 }
             }
+
+            am.PlayInvaderMoveSound();
         }
     }
 
