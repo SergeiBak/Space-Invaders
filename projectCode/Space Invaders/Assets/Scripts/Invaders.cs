@@ -142,7 +142,8 @@ public class Invaders : MonoBehaviour
                             invader.transform.position = pos;
                             invader.AnimateSprite();
 
-                            yield return new WaitForSeconds(invaderSpeed.Evaluate(percentKilled));
+                            if (invader.gameObject.activeInHierarchy)
+                                yield return new WaitForSeconds(invaderSpeed.Evaluate(percentKilled));
                         }
                     }
                 }
@@ -159,11 +160,13 @@ public class Invaders : MonoBehaviour
                     invader.transform.position = pos;
                     invader.AnimateSprite();
 
+                    if (invader.gameObject.activeInHierarchy)
                     yield return new WaitForSeconds(invaderSpeed.Evaluate(percentKilled));
                 }
             }
 
             am.PlayInvaderMoveSound();
+            yield return null;
         }
     }
 
