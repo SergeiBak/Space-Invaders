@@ -42,6 +42,11 @@ public class GameManager : MonoBehaviour
     private Image highScoreThousandsPlace;
 
     [SerializeField]
+    private Text scoreText;
+    [SerializeField]
+    private Text highScoreText;
+
+    [SerializeField]
     private Sprite zeroSprite;
     [SerializeField]
     private Sprite oneSprite;
@@ -168,34 +173,70 @@ public class GameManager : MonoBehaviour
 
     private void UpdateScoreUI()
     {
-        int scoreAmount = score;
+        if ((score / 10) < 1)
+        {
+            scoreText.text = "000" + score.ToString();
+        }
+        else if ((score / 100) < 1)
+        {
+            scoreText.text = "00" + score.ToString();
+        }
+        else if ((score / 1000) < 1)
+        {
+            scoreText.text = "0" + score.ToString();
+        }
+        else
+        {
+            scoreText.text = score.ToString();
+        }
 
-        scoreThousandsPlace.sprite = GetNumberSprite(scoreAmount / 1000);
-        scoreAmount = scoreAmount % 1000;
 
-        scoreHundredsPlace.sprite = GetNumberSprite(scoreAmount / 100);
-        scoreAmount = scoreAmount % 100;
 
-        scoreTensPlace.sprite = GetNumberSprite(scoreAmount / 10);
-        scoreAmount = scoreAmount % 10;
+        //int scoreAmount = score;
 
-        scoreOnesPlace.sprite = GetNumberSprite(scoreAmount);
+        //scoreThousandsPlace.sprite = GetNumberSprite(scoreAmount / 1000);
+        //scoreAmount = scoreAmount % 1000;
+
+        //scoreHundredsPlace.sprite = GetNumberSprite(scoreAmount / 100);
+        //scoreAmount = scoreAmount % 100;
+
+        //scoreTensPlace.sprite = GetNumberSprite(scoreAmount / 10);
+        //scoreAmount = scoreAmount % 10;
+
+        //scoreOnesPlace.sprite = GetNumberSprite(scoreAmount);
     }
 
     private void UpdateHighScoreUI()
     {
         int scoreAmount = PlayerPrefs.GetInt("SpaceInvadersHighScore");
 
-        highScoreThousandsPlace.sprite = GetNumberSprite(scoreAmount / 1000);
-        scoreAmount = scoreAmount % 1000;
+        if ((scoreAmount / 10) < 1)
+        {
+            highScoreText.text = "000" + scoreAmount.ToString();
+        }
+        else if ((scoreAmount / 100) < 1)
+        {
+            highScoreText.text = "00" + scoreAmount.ToString();
+        }
+        else if ((scoreAmount / 1000) < 1)
+        {
+            highScoreText.text = "0" + scoreAmount.ToString();
+        }
+        else
+        {
+            highScoreText.text = scoreAmount.ToString();
+        }
 
-        highScoreHundredsPlace.sprite = GetNumberSprite(scoreAmount / 100);
-        scoreAmount = scoreAmount % 100;
+        //highScoreThousandsPlace.sprite = GetNumberSprite(scoreAmount / 1000);
+        //scoreAmount = scoreAmount % 1000;
 
-        highScoreTensPlace.sprite = GetNumberSprite(scoreAmount / 10);
-        scoreAmount = scoreAmount % 10;
+        //highScoreHundredsPlace.sprite = GetNumberSprite(scoreAmount / 100);
+        //scoreAmount = scoreAmount % 100;
 
-        highScoreOnesPlace.sprite = GetNumberSprite(scoreAmount);
+        //highScoreTensPlace.sprite = GetNumberSprite(scoreAmount / 10);
+        //scoreAmount = scoreAmount % 10;
+
+        //highScoreOnesPlace.sprite = GetNumberSprite(scoreAmount);
     }
 
     private Sprite GetNumberSprite(int digit)
